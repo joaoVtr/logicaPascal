@@ -31,3 +31,60 @@
     uma para cada veículo, esquematizadas a seguir:
 }
 
+Program Trafegos;
+
+var trafego: array [1..4, 1..4, 1..3] of integer;
+    i, j, k, q : integer;
+    destino, origem, tipo: integer;
+
+begin
+    for i := 1 to 4 do
+        for j := 1 to 4 do 
+            for k := 1 to 3 do
+            begin
+                // write('Origem: ',i, ' Destino: ', j, ' Tipo: ', k, ': ');
+                trafego[i,j,k] := 0;
+            end;
+
+    write('Informe a origem: ');
+    readln(origem);
+    write('Informe o destino: ');
+    readln(destino);
+    write('Informe a tipo: ');
+    readln(tipo);
+
+    while(origem <> 0) and (destino <> 0) and (tipo <> 0) do 
+    begin
+
+        trafego[origem, destino, tipo] := trafego[origem, destino, tipo] + 1;
+
+        write('Informe a origem: ');
+        readln(origem);
+        write('Informe o destino: ');
+        readln(destino);
+        write('Informe a tipo: ');
+        readln(tipo);
+    end;
+    
+    writeln();
+    for k:=1 to 3 do
+    begin
+        writeln('veiculo do tipo: ',k);
+        for i := 1 to 4 do 
+        begin
+            for j := 1 to 4 do 
+            write(trafego[i,j,k], ' ');
+            writeln()
+        end;
+         writeln()
+    end;
+
+    q := 0;
+    for j := 1 to 4 do 
+        for k := 1 to 3 do
+            q := q + trafego[1, j, k];
+    writeln('Veiculos vindos de BH: ',q);
+    q := trafego[4,2,3] + trafego [4,4,3];
+    writeln('Onibus de Brasilia indo para Petropolis ou Barbacena: ',q);
+
+end.
