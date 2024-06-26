@@ -75,6 +75,10 @@ begin
         novaDA := DA[c] + d[c, i];
         if (novaDA < DA[i]) then
         begin
+          writeln('Passagem: ', i);
+          writeln('C: ', c);
+          writeln('Nova Da IF: ', novaDA);
+          writeln(); 
           DA[i] := novaDA;
           Ant[i] := c;
         end;
@@ -87,6 +91,8 @@ begin
     for i := 1 to n do
       if (not expA[i]) and (DA[i] < min) then
       begin
+        writeln('min: ', min, ' - c: ',c );
+        writeln();
         min := DA[i];
         c := i;
       end;
